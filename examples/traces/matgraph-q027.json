@@ -1,0 +1,36 @@
+{
+  "veritas_version": "0.1.0",
+  "trace_id": "20ff7bae",
+  "question": {
+    "id": "matgraph-q027",
+    "text": "Where are the van Hove singularities in silicon's density of states?",
+    "language": "en"
+  },
+  "system": {
+    "name": "matgraph",
+    "version": "1.3.0",
+    "retrieval_mode": "traversal",
+    "models": [
+      { "role": "router", "model": "claude-haiku-4-5" },
+      { "role": "synthesis", "model": "claude-sonnet-4-6" }
+    ],
+    "graph_snapshot": "mp-2026-06-30-sha1:4be2f1"
+  },
+  "traversal": {
+    "entry_method": "fulltext-index",
+    "retrieval_empty": true,
+    "visited_nodes": [
+      { "node_id": "mat:Si", "label": "Material", "name": "Si", "hop": 0, "entry_point": true }
+    ],
+    "used_edges": []
+  },
+  "answer": {
+    "text": "This graph has no density-of-states data for silicon, so I can't locate its van Hove singularities. The public Materials Project entries hold band gap and formation energy, but not the DOS structure required here.",
+    "language": "en",
+    "abstained": true,
+    "abstention_reason": "No QuantumState / DOS node linked to Si in this snapshot.",
+    "claims": []
+  },
+  "timing": { "total_ms": 3200, "retrieval_ms": 2800, "synthesis_ms": 400 },
+  "cost": { "llm_calls": 2, "input_tokens": 1900, "output_tokens": 120 }
+}

@@ -1,0 +1,17 @@
+{
+  "veritas_version": "0.1.0",
+  "question_id": "aurora-q006",
+  "graph_snapshot": "aurora-2026-07-11-TODO",
+  "answerable": true,
+  "golden_nodes": [],
+  "golden_edges": [],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "TODO",
+    "annotated_at": "TODO",
+    "protocol_version": "1.0",
+    "_difficulty_hint": "set to 'clear' or 'borderline' when annotating",
+    "notes": "HYPOTHESIS answerable=True. SK duplicate of q004. Tests translate-for-retrieval; golden edges should match q004."
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "answerable": [
+    {
+      "q": "aurora-q002",
+      "f1": 0.0,
+      "precision": 0.0,
+      "precision_unscoped": 0.0,
+      "recall": 0.0,
+      "breadth": 16
+    },
+    {
+      "q": "aurora-q003",
+      "f1": 0.8571,
+      "precision": 0.75,
+      "precision_unscoped": 0.0882,
+      "recall": 1.0,
+      "breadth": 34
+    },
+    {
+      "q": "aurora-q005",
+      "f1": 0.0,
+      "precision": 0.0,
+      "precision_unscoped": 0.0,
+      "recall": 0.0,
+      "breadth": 35
+    },
+    {
+      "q": "aurora-q007",
+      "f1": 0.0,
+      "precision": 0.0,
+      "precision_unscoped": 0.0,
+      "recall": 0.0,
+      "breadth": 91
+    },
+    {
+      "q": "aurora-q011",
+      "f1": 0.5882,
+      "precision": 0.4167,
+      "precision_unscoped": 0.1923,
+      "recall": 1.0,
+      "breadth": 52
+    }
+  ],
+  "honest_null": []
+}

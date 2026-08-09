@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veritas-graphrag"
+version = "1.0.0"
+description = "A benchmark that audits the reasoning path of GraphRAG systems — path fidelity, provenance, honest-null, and overconfidence."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Martina Fusková" }]
+keywords = ["graphrag", "rag", "knowledge-graph", "evaluation", "benchmark", "auditability", "neo4j"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = ["jsonschema>=4.0"]
+
+[project.optional-dependencies]
+otel = ["opentelemetry-sdk>=1.20"]
+dev = ["pytest>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/TinaFusek/veritas"
+Repository = "https://github.com/TinaFusek/veritas"
+
+[project.scripts]
+veritas = "veritas.scorer:_cli"
+
+[tool.setuptools.packages.find]
+include = ["veritas*"]

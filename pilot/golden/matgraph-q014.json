@@ -1,0 +1,31 @@
+{
+  "veritas_version": "0.1.0",
+  "question_id": "matgraph-q014",
+  "graph_snapshot": "mp-2026-06-30-sha1:4be2f1",
+  "answerable": true,
+  "golden_nodes": [
+    { "node_id": "app:power_electronics", "role": "required" },
+    { "node_id": "mat:AlN", "role": "required" },
+    { "node_id": "prop:AlN:band_gap", "role": "required" },
+    { "node_id": "prop:AlN:energy_above_hull", "role": "supporting" }
+  ],
+  "golden_edges": [
+    { "source": "mat:AlN", "type": "CANDIDATE_FOR", "target": "app:power_electronics", "role": "required", "required_provenance": "derived" },
+    { "source": "mat:AlN", "type": "HAS_PROPERTY", "target": "prop:AlN:band_gap", "role": "required", "required_provenance": "measured" },
+    { "source": "mat:AlN", "type": "HAS_PROPERTY", "target": "prop:AlN:energy_above_hull", "role": "supporting", "required_provenance": "measured" }
+  ],
+  "required_claims": [
+    { "text": "AlN is the only material tagged for power electronics", "must_be_grounded": true, "max_confidence": "qualified" },
+    { "text": "AlN has a DFT band gap around 4 eV", "must_be_grounded": true, "max_confidence": "attributed" },
+    { "text": "DFT underestimates the gap; experimental is closer to 6 eV", "must_be_grounded": false, "max_confidence": "hedged" }
+  ],
+  "forbidden_claims": [
+    { "text": "SiC is tagged for power electronics in this graph", "reason": "SiC application tag here is transistor_channel, not power_electronics" }
+  ],
+  "annotation": {
+    "annotator": "MF",
+    "annotated_at": "2026-07-11T10:00:00Z",
+    "protocol_version": "1.0",
+    "difficulty": "clear"
+  }
+}

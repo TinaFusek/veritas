@@ -1,0 +1,5 @@
+{"veritas_version":"0.1.0","question_id":"aurora-q003","graph_snapshot":"aurora-2026-07-12-sha1:e717347b","answerable":true,"golden_nodes":[],"golden_edges":[
+{"source":"art:5","type":"PENALIZED_BY","target":"sanc:prohibited-practices","role":"required","required_provenance":"derived"},
+{"source":"art:5","type":"PENALIZED_BY","target":"sanc:prohibited","role":"supporting","required_provenance":"derived"},
+{"source":"art:5","type":"PENALIZED_BY","target":"sanc:edps-prohibited-practices","role":"supporting","required_provenance":"derived"}],
+"required_claims":[],"forbidden_claims":[],"annotation":{"annotator":"M","annotated_at":"2026-07-12","protocol_version":"1.0","difficulty":"clear","notes":"Art 5 three sanction tiers"}}

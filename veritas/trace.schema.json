@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritas-benchmark.org/schemas/trace/v0.1.0",
+  "title": "VERITAS Trace",
+  "description": "Standard export format for a single GraphRAG question-answering run. A system under test emits one Trace per question. VERITAS scores the trace against a golden subgraph and provenance requirements.",
+  "type": "object",
+  "required": ["veritas_version", "trace_id", "question", "system", "traversal", "answer"],
+  "properties": {
+
+    "veritas_version": {
+      "type": "string",
+      "description": "Version of the VERITAS trace schema this document conforms to.",
+      "examples": ["0.1.0"]
+    },
+
+    "trace_id": {
+      "type": "string",
+      "description": "Unique identifier of this run (UUID or short hash).",
+      "examples": ["cf6f7ed2"]
+    },
+
+    "question": {
+      "type": "object",
+      "required": ["id", "text"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID of the benchmark question this trace answers. Must match the dataset."
+        },
+        "text": { "type": "string" },
+        "language": {
+          "type": "string",
+          "description": "BCP-47 language tag of the question as asked.",
+          "examples": ["en", "sk"]
+        }
+      }
+    },
+
+    "system": {
+      "type": "object",
+      "description": "Identification of the system under test, for reproducibility.",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "examples": ["aurora-compliance", "vector-rag-baseline"] },
+        "version": { "type": "string" },
+        "retrieval_mode": {
+          "type": "string",
+          "description": "Free-form label of the retrieval strategy used for THIS run.",
+          "examples": ["traversal", "vector", "hybrid", "cypher-gen"]
+        },
+        "models": {
+          "type": "array",
+          "description": "LLMs involved and their role.",
+          "items": {
+            "type": "object",
+            "required": ["role", "model"],
+            "properties": {
+              "role": { "type": "string", "examples": ["router", "synthesis", "embedding"] },
+              "model": { "type": "string", "examples": ["claude-haiku-4-5", "claude-sonnet-4-6"] }
+            }
+          }
+        },
+        "graph_snapshot": {
+          "type": "string",
+          "description": "Identifier (hash/date) of the graph version queried. Critical for reproducibility — belief has a half-life."
+        }
+      }
+    },
+
+    "traversal": {
+      "type": "object",
+      "description": "What the system actually touched in the graph. This is what path fidelity is computed on.",
+      "required": ["visited_nodes", "used_edges"],
+      "properties": {
+        "visited_nodes": {
+          "type": "array",
+          "description": "Every node the retrieval step read, in order of first visit.",
+          "items": {
+            "type": "object",
+            "required": ["node_id"],
+            "properties": {
+              "node_id": { "type": "string", "description": "Stable graph-native ID (elementId, URI, or dataset-defined key)." },
+              "label": { "type": "string", "examples": ["Article", "Material", "Obligation"] },
+              "name": { "type": "string", "examples": ["Art. 26", "AlN"] },
+              "hop": { "type": "integer", "minimum": 0, "description": "Distance from the entry node(s) at time of first visit." },
+              "entry_point": { "type": "boolean", "description": "True if this node was a retrieval entry point (seed), e.g. from vector search or index lookup." }
+            }
+          }
+        },
+        "used_edges": {
+          "type": "array",
+          "description": "Edges the system followed. Edges merely adjacent but not followed must NOT be listed.",
+          "items": {
+            "type": "object",
+            "required": ["source", "target", "type"],
+            "properties": {
+              "source": { "type": "string", "description": "node_id of source." },
+              "target": { "type": "string", "description": "node_id of target." },
+              "type": { "type": "string", "examples": ["HAS_OBLIGATION", "HAS_PROPERTY", "HAS_SINGULARITY"] },
+              "provenance": {
+                "$ref": "#/$defs/provenance"
+              }
+            }
+          }
+        },
+        "entry_method": {
+          "type": "string",
+          "description": "How entry points were selected.",
+          "examples": ["fulltext-index", "vector-similarity", "exact-match", "llm-routing"]
+        },
+        "retrieval_empty": {
+          "type": "boolean",
+          "description": "True if retrieval returned no usable graph context. Required for honest-null scoring.",
+          "default": false
+        }
+      }
+    },
+
+    "answer": {
+      "type": "object",
+      "required": ["text", "claims"],
+      "properties": {
+        "text": { "type": "string", "description": "Final answer shown to the user." },
+        "language": { "type": "string", "examples": ["en", "sk"] },
+        "abstained": {
+          "type": "boolean",
+          "description": "True if the system explicitly declined to answer / reported the graph has no answer. This is the honest-null signal.",
+          "default": false
+        },
+        "abstention_reason": {
+          "type": "string",
+          "description": "If abstained: the system's own statement of what it could not see.",
+          "examples": ["No trace in the dataset addresses GPAI transparency beyond a single data point."]
+        },
+        "claims": {
+          "type": "array",
+          "description": "Atomic factual claims in the answer, each linked to its supporting evidence. Provenance coverage = share of claims with at least one valid evidence link.",
+          "items": {
+            "type": "object",
+            "required": ["claim_id", "text"],
+            "properties": {
+              "claim_id": { "type": "string" },
+              "text": { "type": "string", "examples": ["AlN has a band gap of ~4.05 eV (DFT)."] },
+              "evidence": {
+                "type": "array",
+                "description": "Edges and/or nodes supporting this claim. Empty array = unsupported claim.",
+                "items": {
+                  "type": "object",
+                  "required": ["kind", "ref"],
+                  "properties": {
+                    "kind": { "type": "string", "enum": ["edge", "node"] },
+                    "ref": { "type": "string", "description": "node_id, or 'source|type|target' edge key matching traversal.used_edges." }
+                  }
+                }
+              },
+              "confidence_stated": {
+                "type": "string",
+                "description": "How the claim's certainty was communicated in the answer text. Used for the overconfidence penalty: a claim resting on a 'derived' or 'weak' edge but stated as 'asserted' is penalized.",
+                "enum": ["asserted", "qualified", "hedged", "attributed"]
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "timing": {
+      "type": "object",
+      "description": "Optional performance data. Not scored in v0.1, reported for context.",
+      "properties": {
+        "total_ms": { "type": "integer" },
+        "retrieval_ms": { "type": "integer" },
+        "synthesis_ms": { "type": "integer" }
+      }
+    },
+
+    "cost": {
+      "type": "object",
+      "description": "Optional. Tokens/calls consumed by the run.",
+      "properties": {
+        "llm_calls": { "type": "integer" },
+        "input_tokens": { "type": "integer" },
+        "output_tokens": { "type": "integer" }
+      }
+    }
+  },
+
+  "$defs": {
+    "provenance": {
+      "type": "object",
+      "description": "Epistemic grade of an edge. The three-level scale mirrors 'edge brightness = how much to trust it'.",
+      "required": ["grade"],
+      "properties": {
+        "grade": {
+          "type": "string",
+          "enum": ["measured", "derived", "weak"],
+          "description": "measured = primary data (DFT value, statutory text); derived = rule/inference produced from primary data; weak = semantic or heuristic association."
+        },
+        "source": {
+          "type": "string",
+          "description": "Where the fact came from.",
+          "examples": ["Materials Project (CC-BY 4.0)", "EUR-Lex 32024R1689", "Quantum ESPRESSO 7.2, tetrahedra DOS"]
+        },
+        "recorded_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the fact entered the graph. Enables belief half-life analysis in later VERITAS versions."
+        }
+      }
+    }
+  }
+}

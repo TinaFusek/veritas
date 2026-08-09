@@ -1,0 +1,91 @@
+{
+  "veritas_version": "0.1.0",
+  "trace_id": "9a715a01",
+
+  "question": {
+    "id": "matgraph-q014",
+    "text": "Which wide-gap materials suit power electronics?",
+    "language": "en"
+  },
+
+  "system": {
+    "name": "matgraph",
+    "version": "1.3.0",
+    "retrieval_mode": "traversal",
+    "models": [
+      { "role": "router", "model": "claude-haiku-4-5" },
+      { "role": "synthesis", "model": "claude-sonnet-4-6" }
+    ],
+    "graph_snapshot": "mp-2026-06-30-sha1:4be2f1"
+  },
+
+  "traversal": {
+    "entry_method": "fulltext-index",
+    "retrieval_empty": false,
+    "visited_nodes": [
+      { "node_id": "app:power_electronics", "label": "Application", "name": "power_electronics", "hop": 0, "entry_point": true },
+      { "node_id": "mat:AlN", "label": "Material", "name": "AlN", "hop": 1 },
+      { "node_id": "prop:AlN:band_gap", "label": "Property", "name": "band_gap", "hop": 2 },
+      { "node_id": "prop:AlN:energy_above_hull", "label": "Property", "name": "energy_above_hull", "hop": 2 },
+      { "node_id": "struct:hexagonal", "label": "CrystalStructure", "name": "Hexagonal", "hop": 2 },
+      { "node_id": "eff:leakage_current", "label": "PhysicalEffect", "name": "leakage_current", "hop": 2 }
+    ],
+    "used_edges": [
+      {
+        "source": "mat:AlN", "target": "app:power_electronics", "type": "CANDIDATE_FOR",
+        "provenance": { "grade": "derived", "source": "MatGraph physics interpretation layer v2", "recorded_at": "2026-05-12T09:30:00Z" }
+      },
+      {
+        "source": "mat:AlN", "target": "prop:AlN:band_gap", "type": "HAS_PROPERTY",
+        "provenance": { "grade": "measured", "source": "Materials Project (CC-BY 4.0), DFT PBE", "recorded_at": "2026-04-02T00:00:00Z" }
+      },
+      {
+        "source": "mat:AlN", "target": "prop:AlN:energy_above_hull", "type": "HAS_PROPERTY",
+        "provenance": { "grade": "measured", "source": "Materials Project (CC-BY 4.0), DFT PBE", "recorded_at": "2026-04-02T00:00:00Z" }
+      },
+      {
+        "source": "mat:AlN", "target": "struct:hexagonal", "type": "HAS_STRUCTURE",
+        "provenance": { "grade": "measured", "source": "Materials Project (CC-BY 4.0)", "recorded_at": "2026-04-02T00:00:00Z" }
+      },
+      {
+        "source": "eff:leakage_current", "target": "app:power_electronics", "type": "LIMITS",
+        "provenance": { "grade": "weak", "source": "semantic association, interpretation layer", "recorded_at": "2026-05-12T09:30:00Z" }
+      }
+    ]
+  },
+
+  "answer": {
+    "text": "Based on the graph context, only AlN is explicitly tagged for power electronics. It has a band gap of ~4.05 eV (DFT), is thermodynamically stable (energy above hull = 0.0) and crystallizes hexagonally. Note that DFT systematically underestimates gaps; AlN's experimental gap is closer to ~6 eV.",
+    "language": "en",
+    "abstained": false,
+    "claims": [
+      {
+        "claim_id": "c1",
+        "text": "AlN is the only material tagged for power electronics in this graph.",
+        "evidence": [ { "kind": "edge", "ref": "mat:AlN|CANDIDATE_FOR|app:power_electronics" } ],
+        "confidence_stated": "qualified"
+      },
+      {
+        "claim_id": "c2",
+        "text": "AlN has a DFT band gap of ~4.05 eV.",
+        "evidence": [ { "kind": "edge", "ref": "mat:AlN|HAS_PROPERTY|prop:AlN:band_gap" } ],
+        "confidence_stated": "attributed"
+      },
+      {
+        "claim_id": "c3",
+        "text": "AlN is thermodynamically stable (energy above hull = 0.0).",
+        "evidence": [ { "kind": "edge", "ref": "mat:AlN|HAS_PROPERTY|prop:AlN:energy_above_hull" } ],
+        "confidence_stated": "asserted"
+      },
+      {
+        "claim_id": "c4",
+        "text": "AlN's experimental band gap is closer to ~6 eV.",
+        "evidence": [],
+        "confidence_stated": "hedged"
+      }
+    ]
+  },
+
+  "timing": { "total_ms": 9083, "retrieval_ms": 2100, "synthesis_ms": 6900 },
+  "cost": { "llm_calls": 2, "input_tokens": 4820, "output_tokens": 610 }
+}

@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://veritas-benchmark.org/schemas/golden/v0.1.0",
+  "title": "VERITAS Golden Annotation",
+  "description": "Human-annotated ground truth for a single benchmark question. VERITAS scores a system Trace against this. One golden file per question.",
+  "type": "object",
+  "required": ["veritas_version", "question_id", "answerable", "golden_edges"],
+  "properties": {
+
+    "veritas_version": { "type": "string", "examples": ["0.1.0"] },
+
+    "question_id": {
+      "type": "string",
+      "description": "Must match trace.question.id exactly."
+    },
+
+    "graph_snapshot": {
+      "type": "string",
+      "description": "Graph version this annotation is valid for. A golden file is only comparable to traces on the same snapshot — belief has a half-life."
+    },
+
+    "answerable": {
+      "type": "boolean",
+      "description": "True if the graph contains enough to answer. False = honest-null case; the correct behaviour is to abstain."
+    },
+
+    "golden_nodes": {
+      "type": "array",
+      "description": "Nodes a correct traversal must visit. Optional but recommended; used for node-level recall.",
+      "items": {
+        "type": "object",
+        "required": ["node_id"],
+        "properties": {
+          "node_id": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["required", "supporting"],
+            "description": "required = answer is wrong without it; supporting = strengthens but not mandatory.",
+            "default": "required"
+          }
+        }
+      }
+    },
+
+    "golden_edges": {
+      "type": "array",
+      "description": "Edges a correct traversal must follow. Path fidelity is computed against these. Edge key = 'source|type|target'.",
+      "items": {
+        "type": "object",
+        "required": ["source", "type", "target"],
+        "properties": {
+          "source": { "type": "string" },
+          "type": { "type": "string" },
+          "target": { "type": "string" },
+          "role": {
+            "type": "string",
+            "enum": ["required", "supporting"],
+            "default": "required"
+          },
+          "required_provenance": {
+            "type": "string",
+            "enum": ["measured", "derived", "weak", "any"],
+            "description": "The minimum provenance grade this edge must carry for a claim resting on it to count as properly grounded.",
+            "default": "any"
+          }
+        }
+      }
+    },
+
+    "required_claims": {
+      "type": "array",
+      "description": "Facts a complete answer must contain, each with the provenance grade it must be stated at. Drives provenance coverage and overconfidence scoring.",
+      "items": {
+        "type": "object",
+        "required": ["text", "must_be_grounded"],
+        "properties": {
+          "text": { "type": "string", "description": "Human-readable description of the fact (for annotator reference; matched to system claims by the scorer's claim-matcher, not string equality)." },
+          "must_be_grounded": {
+            "type": "boolean",
+            "description": "True if this claim must be backed by a golden edge. If the fact is true-but-not-in-graph, set false."
+          },
+          "max_confidence": {
+            "type": "string",
+            "enum": ["asserted", "qualified", "hedged", "attributed"],
+            "description": "The strongest phrasing allowed. A claim resting on a 'derived'/'weak' edge but stated 'asserted' exceeds this and is penalized.",
+            "default": "asserted"
+          }
+        }
+      }
+    },
+
+    "forbidden_claims": {
+      "type": "array",
+      "description": "Assertions that would be hallucinations or overreach for this question. Presence in the answer is penalized.",
+      "items": {
+        "type": "object",
+        "required": ["text"],
+        "properties": {
+          "text": { "type": "string" },
+          "reason": { "type": "string", "examples": ["Not in graph", "Contradicts DFT value", "Over-generalizes from single data point"] }
+        }
+      }
+    },
+
+    "annotation": {
+      "type": "object",
+      "description": "Provenance of the annotation itself. Required for the reliability audit in the paper.",
+      "properties": {
+        "annotator": { "type": "string" },
+        "annotated_at": { "type": "string", "format": "date-time" },
+        "protocol_version": { "type": "string", "examples": ["1.0"] },
+        "difficulty": { "type": "string", "enum": ["clear", "borderline"], "description": "Borderline cases are reported separately and may be excluded from the headline score." },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "veritas_version": "0.1.0",
+  "description": "VERITAS pilot set (20 questions, 2 graphs). answerable flags are hypotheses to confirm.",
+  "n": 20,
+  "questions": [
+    {
+      "id": "aurora-q001",
+      "text": "Is a CV screening tool high-risk?",
+      "language": "en",
+      "domain": "aurora",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "aurora-q002",
+      "text": "What must a provider of a high-risk AI system document?",
+      "language": "en",
+      "domain": "aurora",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "aurora-q003",
+      "text": "What penalties apply to prohibited practices?",
+      "language": "en",
+      "domain": "aurora",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "aurora-q004",
+      "text": "When do high-risk obligations become applicable?",
+      "language": "en",
+      "domain": "aurora",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "aurora-q005",
+      "text": "What are the transparency requirements for GPAI models?",
+      "language": "en",
+      "domain": "aurora",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "aurora-q006",
+      "text": "Kedy platia povinnosti pre vysokorizikové systemy?",
+      "language": "sk",
+      "domain": "aurora",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "aurora-q007",
+      "text": "Ake su vynimky z povinnosti zverejnenia podla clanku 50?",
+      "language": "sk",
+      "domain": "aurora",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "aurora-q008",
+      "text": "Does the AI Act require a specific programming language for compliant systems?",
+      "language": "en",
+      "domain": "aurora",
+      "answerable_hypothesis": false
+    },
+    {
+      "id": "aurora-q009",
+      "text": "How did the CJEU rule on Article 6 in 2027?",
+      "language": "en",
+      "domain": "aurora",
+      "answerable_hypothesis": false
+    },
+    {
+      "id": "aurora-q010",
+      "text": "What does Article 141 of the AI Act require?",
+      "language": "en",
+      "domain": "aurora",
+      "answerable_hypothesis": false
+    },
+    {
+      "id": "matgraph-q014",
+      "text": "Which wide-gap materials suit power electronics?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "matgraph-q015",
+      "text": "Which stable materials have a band gap between 1 and 2 eV?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "matgraph-q016",
+      "text": "What is a candidate for a transistor channel?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "matgraph-q017",
+      "text": "Why does leakage current worsen below 2 nm?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "matgraph-q018",
+      "text": "Which material has the widest band gap in the graph?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "matgraph-q019",
+      "text": "Is GaN a candidate for power electronics in this graph?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "matgraph-q020",
+      "text": "Ktore stabilne materialy maju siroky zakazany pas?",
+      "language": "sk",
+      "domain": "matgraph",
+      "answerable_hypothesis": true
+    },
+    {
+      "id": "matgraph-q027",
+      "text": "Where are the van Hove singularities in silicon's density of states?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": false
+    },
+    {
+      "id": "matgraph-q028",
+      "text": "Which of these materials is most biocompatible for a neural implant?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": false
+    },
+    {
+      "id": "matgraph-q029",
+      "text": "What is the thin-film synthesis temperature for AlN?",
+      "language": "en",
+      "domain": "matgraph",
+      "answerable_hypothesis": false
+    }
+  ]
+}

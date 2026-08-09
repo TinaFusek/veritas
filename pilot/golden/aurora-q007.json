@@ -1,0 +1,60 @@
+{
+  "veritas_version": "0.1.0",
+  "question_id": "aurora-q007",
+  "graph_snapshot": "aurora-2026-07-12-sha1:e717347b",
+  "answerable": true,
+  "golden_nodes": [],
+  "golden_edges": [
+    {
+      "source": "art:50",
+      "type": "IMPOSES",
+      "target": "obl:OBL-DISCLOSE-AI",
+      "role": "required",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "obl:OBL-DISCLOSE-AI",
+      "type": "HAS_EXCEPTION",
+      "target": "exc:disclose-ai",
+      "role": "required",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "art:50",
+      "type": "IMPOSES",
+      "target": "obl:OBL-ART50-2",
+      "role": "supporting",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "obl:OBL-ART50-2",
+      "type": "HAS_EXCEPTION",
+      "target": "exc:synthetic-content",
+      "role": "supporting",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "art:50",
+      "type": "IMPOSES",
+      "target": "obl:OBL-ART50-4A",
+      "role": "supporting",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "obl:OBL-ART50-4A",
+      "type": "HAS_EXCEPTION",
+      "target": "exc:deepfake",
+      "role": "supporting",
+      "required_provenance": "derived"
+    }
+  ],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "M",
+    "annotated_at": "2026-07-12",
+    "protocol_version": "1.0",
+    "difficulty": "clear",
+    "notes": "Article 50 has 11 obligation-exception pairs; annotated 3 representative disclosure themes (transparency required, synthetic-content + deepfake supporting) per the 'representative sample' rule. Exception nodes have no stable IDs in schema — labelled by theme."
+  }
+}

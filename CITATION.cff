@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use VERITAS, please cite it as below."
+title: "VERITAS: auditing the reasoning path of GraphRAG systems"
+authors:
+  - family-names: "Fusková"
+    given-names: "Martina"
+version: 1.0.0
+date-released: 2026-07-15
+license: MIT
+keywords:
+  - GraphRAG
+  - knowledge graphs
+  - evaluation
+  - auditability
+  - honest-null
+repository-code: "https://github.com/TinaFusek/veritas"

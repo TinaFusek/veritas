@@ -1,0 +1,17 @@
+{
+  "veritas_version": "0.1.0",
+  "question_id": "matgraph-q017",
+  "graph_snapshot": "mp-2026-06-30-sha1:4be2f1",
+  "answerable": true,
+  "golden_nodes": [],
+  "golden_edges": [],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "TODO",
+    "annotated_at": "TODO",
+    "protocol_version": "1.0",
+    "_difficulty_hint": "set to 'clear' or 'borderline' when annotating",
+    "notes": "HYPOTHESIS answerable=True. PhysicalEffect layer (tunneling). Provenance is 'derived'/'weak' — max_confidence should cap accordingly."
+  }
+}

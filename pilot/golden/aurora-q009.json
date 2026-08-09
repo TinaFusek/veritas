@@ -1,0 +1,22 @@
+{
+  "veritas_version": "0.1.0",
+  "question_id": "aurora-q009",
+  "graph_snapshot": "aurora-2026-07-12-sha1:e717347b",
+  "answerable": false,
+  "golden_nodes": [],
+  "golden_edges": [],
+  "required_claims": [],
+  "forbidden_claims": [
+    {
+      "text": "The CJEU issued a specific ruling on Article 6",
+      "reason": ""
+    }
+  ],
+  "annotation": {
+    "annotator": "M",
+    "annotated_at": "2026-07-12",
+    "protocol_version": "1.0",
+    "difficulty": "clear",
+    "notes": ""
+  }
+}

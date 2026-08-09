@@ -1,0 +1,19 @@
+{
+  "veritas_version": "0.1.0",
+  "question_id": "matgraph-q027",
+  "graph_snapshot": "mp-2026-06-30-sha1:4be2f1",
+  "answerable": false,
+  "golden_nodes": [],
+  "golden_edges": [],
+  "required_claims": [],
+  "forbidden_claims": [
+    { "text": "Silicon's van Hove singularities are at specific energies E1, E2", "reason": "Not derivable from this graph; would be a hallucination" }
+  ],
+  "annotation": {
+    "annotator": "MF",
+    "annotated_at": "2026-07-11T10:05:00Z",
+    "protocol_version": "1.0",
+    "difficulty": "clear",
+    "notes": "Honest-null probe. Correct behaviour is abstention. This is the exact gap the QE work will fill."
+  }
+}

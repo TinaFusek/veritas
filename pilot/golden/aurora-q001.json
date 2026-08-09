@@ -1,0 +1,17 @@
+{
+  "veritas_version": "0.1.0",
+  "question_id": "aurora-q001",
+  "graph_snapshot": "aurora-2026-07-11-TODO",
+  "answerable": true,
+  "golden_nodes": [],
+  "golden_edges": [],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "TODO",
+    "annotated_at": "TODO",
+    "protocol_version": "1.0",
+    "_difficulty_hint": "set to 'clear' or 'borderline' when annotating",
+    "notes": "HYPOTHESIS answerable=True. Annex III employment use case -> Art. 6(2). Core answerable case."
+  }
+}
