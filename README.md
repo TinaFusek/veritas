@@ -23,6 +23,8 @@ asking another LLM "was this good?" — which would share the blind spots of the
 being judged.
 
 ---
+<img width="1960" height="1116" alt="veritas-hero" src="https://github.com/user-attachments/assets/6ab63fdd-0f36-4f5b-8c63-82fdc5b37d9b" />
+---
 
 ## Why this exists
 
