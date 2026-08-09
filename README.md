@@ -121,6 +121,8 @@ pytest -q          # 8 tests, including the precision-calibration invariant
 **v1.0** — deterministic scorer (4 metrics, calibrated), JSON schemas, annotation
 protocol, OpenTelemetry export, Aurora + MatGraph pilot goldens.
 
+https://doi.org/10.5281/zenodo.21862325
+
 Planned:
 - Larger annotated dataset (20+ questions) and a second domain's traces
 - Inter-annotator agreement (Cohen's kappa) — tooling in `tools/iaa.py`
