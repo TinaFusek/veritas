@@ -1,0 +1,28 @@
+{
+  "veritas_version": "1.0.0",
+  "question_id": "aurora-q014",
+  "graph_snapshot": "aurora-2026-07-12-sha1:e717347b",
+  "answerable": true,
+  "golden_nodes": [],
+  "golden_edges": [
+    { "source": "art:9", "type": "IMPOSES", "target": "obl:OBL-RMS", "role": "required", "required_provenance": "derived" },
+    { "source": "obl:OBL-RMS", "type": "CONDITIONAL_ON", "target": "risk:high", "role": "required", "required_provenance": "derived" },
+    { "source": "art:9", "type": "IMPOSES", "target": "obl:OBL-ART9-1", "role": "required", "required_provenance": "derived" },
+    { "source": "obl:OBL-ART9-1", "type": "CONDITIONAL_ON", "target": "risk:high", "role": "required", "required_provenance": "derived" },
+    { "source": "art:9", "type": "IMPOSES", "target": "obl:OBL-ART9-2", "role": "required", "required_provenance": "derived" },
+    { "source": "obl:OBL-ART9-2", "type": "CONDITIONAL_ON", "target": "risk:high", "role": "required", "required_provenance": "derived" },
+    { "source": "art:9", "type": "IMPOSES", "target": "obl:OBL-ART9-4", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:9", "type": "IMPOSES", "target": "obl:OBL-ART9-5", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:9", "type": "IMPOSES", "target": "obl:OBL-ART9-6", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:9", "type": "IMPOSES", "target": "obl:OBL-ART9-7", "role": "supporting", "required_provenance": "derived" }
+  ],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "M",
+    "annotated_at": "2026-07-18",
+    "protocol_version": "1.0",
+    "difficulty": "clear",
+    "notes": "Q: 'What are the requirements for a risk management system for high-risk AI?' Article 9 is one process decomposed into phases, all provider + high-risk. Required core = the defining features of an RMS: OBL-RMS (documented RMS across lifecycle, the summary duty), OBL-ART9-1 (establish/implement/document/maintain), OBL-ART9-2 (continuous iterative process across lifecycle). Each paired with CONDITIONAL_ON risk:high. Supporting = concrete phases: 9-4 (residual risk acceptable), 9-5 (testing), 9-6 (testing timing), 9-7 (impact on under-18s / vulnerable groups — annotator judged supporting: too important to drop, not a defining feature of the RMS itself). Excluded: 9-3 (abstract balance-of-requirements), 9-8 (integration with other Union law) — peripheral to the core question."
+  }
+}

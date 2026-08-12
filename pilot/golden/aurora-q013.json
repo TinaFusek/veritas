@@ -1,0 +1,17 @@
+{
+  "veritas_version": "1.0.0",
+  "question_id": "aurora-q013",
+  "graph_snapshot": "aurora-2026-07-12-sha1:e717347b",
+  "answerable": false,
+  "golden_nodes": [],
+  "golden_edges": [],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "M",
+    "annotated_at": "2026-07-18",
+    "protocol_version": "1.0",
+    "difficulty": "borderline",
+    "notes": "Q: 'What AI practices are prohibited under the AI Act?' This is a COVERAGE-GAP honest-null, distinct from an out-of-scope one. The answer DOES exist in law (Article 5 prohibitions), but in this graph snapshot Article 5 is only chunked as raw text (CHUNK_OF -> A5-C0..A5-C15) and connected to sanctions (PENALIZED_BY -> Sanction); it has NO structured IMPOSES -> Obligation/Prohibition nodes. So there is no defensible structured path to traverse. Correct system behaviour: answer from text but signal that the prohibitions are not structured in the graph, or abstain from a structured claim — NOT fabricate structured obligations that don't exist. Marked answerable:false because no structured golden path exists. FUTURE WORK on Aurora: decompose Article 5 into Prohibition nodes like other articles."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "veritas_version": "1.0.0",
+  "question_id": "aurora-q015",
+  "graph_snapshot": "aurora-2026-07-12-sha1:e717347b",
+  "answerable": true,
+  "golden_nodes": [],
+  "golden_edges": [
+    { "source": "art:50", "type": "IMPOSES", "target": "obl:OBL-DISCLOSE-AI", "role": "required", "required_provenance": "derived" },
+    { "source": "obl:OBL-DISCLOSE-AI", "type": "CONDITIONAL_ON", "target": "risk:limited", "role": "required", "required_provenance": "derived" },
+    { "source": "art:50", "type": "IMPOSES", "target": "obl:OBL-ART50-1", "role": "required", "required_provenance": "derived" },
+    { "source": "obl:OBL-ART50-1", "type": "CONDITIONAL_ON", "target": "risk:limited", "role": "required", "required_provenance": "derived" },
+    { "source": "art:50", "type": "IMPOSES", "target": "obl:OBL-ART50-2", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:50", "type": "IMPOSES", "target": "obl:OBL-ART50-3", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:50", "type": "IMPOSES", "target": "obl:OBL-ART50-4A", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:50", "type": "IMPOSES", "target": "obl:OBL-ART50-4B", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:50", "type": "IMPOSES", "target": "obl:OBL-ART50-5", "role": "supporting", "required_provenance": "derived" }
+  ],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "M",
+    "annotated_at": "2026-07-22",
+    "protocol_version": "1.0",
+    "difficulty": "clear",
+    "notes": "Q: 'What transparency obligations apply under Article 50?' NOTE: Article 50 is CONDITIONAL_ON risk:limited, NOT high-risk — transparency is a separate layer for limited-risk systems. Mixed roles (provider/deployer). Required core: OBL-DISCLOSE-AI (summary: inform people they interact with AI + mark synthetic content, [provider,deployer]) and OBL-ART50-1 (chatbots must disclose they are AI, [provider]) — the two most basic transparency duties, each CONDITIONAL_ON risk:limited. Supporting: 50-2 (watermark synthetic content), 50-3 (emotion/biometric), 50-4A (deepfakes — famous but a specific case, not core), 50-4B (AI text on public-interest matters), 50-5 (manner/timing of disclosure). Excluded: 50-7 (AI Office codes of practice, role [], administrative)."
+  }
+}

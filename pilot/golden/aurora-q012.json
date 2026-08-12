@@ -1,0 +1,60 @@
+{
+  "veritas_version": "1.0.0",
+  "question_id": "aurora-q012",
+  "graph_snapshot": "aurora-2026-07-12-sha1:e717347b",
+  "answerable": true,
+  "golden_nodes": [],
+  "golden_edges": [
+    {
+      "source": "art:6",
+      "type": "IMPOSES",
+      "target": "obl:OBL-ART6-1",
+      "role": "required",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "obl:OBL-ART6-1",
+      "type": "CONDITIONAL_ON",
+      "target": "risk:high",
+      "role": "required",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "art:6",
+      "type": "IMPOSES",
+      "target": "obl:OBL-ART6-2",
+      "role": "required",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "obl:OBL-ART6-2",
+      "type": "CONDITIONAL_ON",
+      "target": "risk:high",
+      "role": "required",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "art:6",
+      "type": "IMPOSES",
+      "target": "obl:OBL-ART6-3",
+      "role": "supporting",
+      "required_provenance": "derived"
+    },
+    {
+      "source": "art:6",
+      "type": "IMPOSES",
+      "target": "obl:OBL-ART6-4",
+      "role": "supporting",
+      "required_provenance": "derived"
+    }
+  ],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "M",
+    "annotated_at": "2026-07-18",
+    "protocol_version": "1.0",
+    "difficulty": "clear",
+    "notes": "Q: 'When is an AI system classified as high-risk?' Two classification gates are required: OBL-ART6-1 (safety component of Annex I product + third-party conformity assessment) and OBL-ART6-2 (Annex III systems). Both CONDITIONAL_ON risk:high. OBL-ART6-3 (provider self-assessment that an Annex III system is not high-risk) and 6-4 (registration duty that follows) are supporting — related procedure, not the core definition. OBL-ART6-5..8 excluded: they concern Commission delegated acts / guidelines (role []), out of scope for a classification question — NOT excluded to improve scores."
+  }
+}

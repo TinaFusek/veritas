@@ -1,0 +1,25 @@
+{
+  "veritas_version": "1.0.0",
+  "question_id": "aurora-q016",
+  "graph_snapshot": "aurora-2026-07-12-sha1:e717347b",
+  "answerable": true,
+  "golden_nodes": [],
+  "golden_edges": [
+    { "source": "art:28", "type": "IMPOSES", "target": "obl:OBL-ART28-1", "role": "required", "required_provenance": "derived" },
+    { "source": "art:28", "type": "IMPOSES", "target": "obl:OBL-ART28-3", "role": "required", "required_provenance": "derived" },
+    { "source": "art:28", "type": "IMPOSES", "target": "obl:OBL-ART28-2", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:28", "type": "IMPOSES", "target": "obl:OBL-ART28-4", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:28", "type": "IMPOSES", "target": "obl:OBL-ART28-5", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:28", "type": "IMPOSES", "target": "obl:OBL-ART28-6", "role": "supporting", "required_provenance": "derived" },
+    { "source": "art:28", "type": "IMPOSES", "target": "obl:OBL-ART28-7", "role": "supporting", "required_provenance": "derived" }
+  ],
+  "required_claims": [],
+  "forbidden_claims": [],
+  "annotation": {
+    "annotator": "M",
+    "annotated_at": "2026-07-22",
+    "protocol_version": "1.0",
+    "difficulty": "clear",
+    "notes": "Q: 'What are the obligations of notifying authorities?' IMPORTANT annotation note: all obligations here have role [] (empty) — but that does NOT mean exclude, because the SUBJECT of this question is the authority itself, not a provider/deployer. The 'exclude role []' heuristic only applies when the question is asked from a regulated-entity viewpoint. Required core: OBL-ART28-1 (Member States must designate a notifying authority responsible for assessing/monitoring conformity assessment bodies — the definition) and OBL-ART28-3 (must prevent conflicts of interest, be objective and impartial — a defining feature of a trustworthy authority). Supporting: 28-2 ('may' delegate to accreditation body — permission, not duty), 28-4 (decision separation), 28-5 (no commercial activities), 28-6 (confidentiality), 28-7 (competent personnel). CONFORMITY-ASSESSMENT COVERAGE GAP noted separately: the broader 'how is a high-risk system certified?' path is scattered across Art. 6/16/43/44 mentions in text, not a contiguous structured path — candidate future finding."
+  }
+}
