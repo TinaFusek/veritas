@@ -23,6 +23,8 @@ asking another LLM "was this good?" — which would share the blind spots of the
 being judged.
 
 ---
+<img width="1960" height="1116" alt="veritas-hero" src="https://github.com/user-attachments/assets/6ab63fdd-0f36-4f5b-8c63-82fdc5b37d9b" />
+---
 
 ## Why this exists
 
@@ -118,6 +120,8 @@ pytest -q          # 8 tests, including the precision-calibration invariant
 
 **v1.0** — deterministic scorer (4 metrics, calibrated), JSON schemas, annotation
 protocol, OpenTelemetry export, Aurora + MatGraph pilot goldens.
+
+https://doi.org/10.5281/zenodo.21862325
 
 Planned:
 - Larger annotated dataset (20+ questions) and a second domain's traces
